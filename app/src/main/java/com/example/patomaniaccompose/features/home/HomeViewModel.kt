@@ -12,21 +12,18 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @HiltViewModel
-@Singleton
 class HomeViewModel @Inject constructor(
-
     patoManiacRepository: PatoManiacRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(HomeUiState() )
+    private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow <HomeUiState> = _uiState
 
     init {
         viewModelScope.launch {
             _uiState.update {
-
                 it.copy(
-                    listRecipes = patoManiacRepository.getRecipesInformation() ?: ArrayList()
+                  listRecipes = patoManiacRepository.getRecipesInformation() ?: ArrayList()
                 )
             }
         }

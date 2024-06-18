@@ -22,7 +22,7 @@ fun AppNavigation() {
             HomeScreen(navController)
         }
 
-        composable(route = AppScreens.DetailsScreen.route + id.toString() ) {backStackEntry ->
+        composable(route = AppScreens.DetailsScreen.route) {backStackEntry ->
             val id = backStackEntry.arguments?.getString("id")
             DetailsScreen(navController, id)
         }

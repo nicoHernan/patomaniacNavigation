@@ -12,9 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @HiltViewModel
-@Singleton
 class DetailsViewModel @Inject constructor(
-
     patoManiacRepository: PatoManiacRepository
 ) : ViewModel() {
 

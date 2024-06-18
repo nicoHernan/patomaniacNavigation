@@ -6,14 +6,14 @@ data class Recipes(
 
     val offset: Int,
     val number: Int,
-    @SerializedName("resultDataRecipe")
+    @SerializedName("results")
     val result: ArrayList<ResultRecipes>
 )
 
 class ResultRecipes(
 
     val id: Int,
-    @SerializedName("titleRecipe")
+    @SerializedName("title")
     val tittle: String,
     val image: String,
     val imageType: String

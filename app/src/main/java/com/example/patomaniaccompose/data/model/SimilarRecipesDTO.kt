@@ -2,10 +2,7 @@ package com.example.patomaniaccompose.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class SimilarRecipesDTO(
 
-    val resultSimilarRecipe: ArrayList<ResultSimilarRecipe>
-)
 
 class ResultSimilarRecipe(
 

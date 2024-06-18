@@ -1,6 +1,7 @@
 package com.example.patomaniaccompose.di
 
 import com.example.patomaniaccompose.data.PatoManiacApiService
+import com.example.patomaniaccompose.data.PatoManiacRepository
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -23,7 +24,7 @@ class NetworkModule {
             .build()
 
     @Provides
+    @Singleton
     fun providesPatoManiacApiService (retrofit: Retrofit): PatoManiacApiService =
-
         retrofit.create(PatoManiacApiService::class.java)
 }

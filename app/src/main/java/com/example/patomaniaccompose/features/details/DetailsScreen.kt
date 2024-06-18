@@ -8,24 +8,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 
 @Composable
 fun DetailsScreen (
-
-    navController: NavHostController ,  //Todo ¿Por qué queda sin asignar navController?
-    id: String?) {                                  //TODO por qué NavHostController y no NavController
-                                                                    //Todo parametro navController no asignado ?
-
+    navController: NavController,
+    id: String?
+) {
     Scaffold(
-
     modifier = Modifier.fillMaxSize()
     ) {
         Column(
-
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it)            // todo-> el paddingValues es obligatorio??
+                .padding(it)         
         ) {
             Text(text = "Argumento de navegación ${id}")
         }

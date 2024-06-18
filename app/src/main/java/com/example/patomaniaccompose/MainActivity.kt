@@ -16,9 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        enableEdgeToEdge()          // TODO QUE ES ???
-
+        enableEdgeToEdge()
         setContent {
             PatoManiacComposeTheme {
                 Scaffold (
@@ -34,13 +32,6 @@ class MainActivity : ComponentActivity() {
                         AppNavigation()
                     }
                 }
-                //Scaffold(modifier = Modifier.fillMaxSize() ) { innerPadding ->   //TODO innerPading ??
-                //Todo Scaffold deprecado ??? ->    Captura de pantalla en escritorio del error
-                    /*Column(
-                        modifier = Modifier
-                            .padding(innerPadding)
-                    ){}                         //Todo -> Colum agregado por innerPadding corresponde ???
-*/
             }
         }
     }

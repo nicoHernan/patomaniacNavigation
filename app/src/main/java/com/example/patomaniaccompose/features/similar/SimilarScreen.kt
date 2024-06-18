@@ -16,11 +16,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.patomaniaccompose.data.model.ResultSimilarRecipe
-import com.example.patomaniaccompose.features.home.HomeViewModel
+import com.example.patomaniaccompose.navigation.AppScreens
 
 @Composable
 fun SimilarScreen (
-
     navController: NavController,
     similarViewModel: SimilarViewModel= hiltViewModel()
 ) {
@@ -28,16 +27,11 @@ fun SimilarScreen (
     val similarUiState = similarViewModel.similarUiState.collectAsState()
 
     Scaffold (
-
-
         modifier = Modifier
             .fillMaxSize()
             .padding(10.dp)
     ) {
-
         Column(
-
-
             modifier = Modifier
                 .padding(it)
         ) {
@@ -47,8 +41,7 @@ fun SimilarScreen (
                 items(similarUiState.value.listSimilarRecipes) {
 
                     SimilarRecipesItem(itemSimilar = it){
-
-                        navController.navigate("similar_screen")     //Todo -> route igual string que en AppScreen ??
+                        navController.navigate(AppScreens.SimilarRecipeScreen.route)
                     }
                 }
             }
@@ -64,19 +57,18 @@ fun SimilarRecipesItem(
 ) {
 
     Column(
-
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp)
             .clickable {
-
                 itemSimilarSelected(itemSimilar.id.toString())
             }
     ) {
 
         AsyncImage(
-            model = itemSimilar.sourceUrl ,
-            contentDescription = null)
+            model = itemSimilar.sourceUrl,
+            contentDescription = null
+        )
     }
 }
 

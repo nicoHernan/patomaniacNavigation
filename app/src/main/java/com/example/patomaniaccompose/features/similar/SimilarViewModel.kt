@@ -12,9 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @HiltViewModel
-@Singleton
 class SimilarViewModel @Inject constructor(
-
     patoManiacRepository: PatoManiacRepository
 ): ViewModel (){
 
@@ -26,9 +24,7 @@ class SimilarViewModel @Inject constructor(
         viewModelScope.launch {
 
             _similarState.update {
-
                 it.copy(
-
                     listSimilarRecipes = patoManiacRepository.getRecipesSimilarInformation() ?: ArrayList()
                 )
             }

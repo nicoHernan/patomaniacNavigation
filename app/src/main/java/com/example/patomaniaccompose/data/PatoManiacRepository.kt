@@ -14,7 +14,6 @@ class PatoManiacRepository @Inject constructor(
     }
 
     suspend fun getRecipesSimilarInformation(): ArrayList <ResultSimilarRecipe> ? {
-
-        return patoManiacApiService.getSimilarRecipes().body()?.resultSimilarRecipe
+        return patoManiacApiService.getSimilarRecipes().body()
     }
 }
