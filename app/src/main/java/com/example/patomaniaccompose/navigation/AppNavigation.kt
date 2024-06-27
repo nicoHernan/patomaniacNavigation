@@ -13,7 +13,6 @@ fun AppNavigation() {
 
     val navController = rememberNavController()
     NavHost(
-
         navController = navController,
         startDestination = AppScreens.HomeScreen.route
     ) {
@@ -27,7 +26,7 @@ fun AppNavigation() {
             DetailsScreen(navController, id)
         }
 
-        composable(route = AppScreens.SimilarRecipeScreen.route){
+        composable(route = AppScreens.SimilarRecipeScreen.route) {
 
             SimilarScreen(navController)
         }

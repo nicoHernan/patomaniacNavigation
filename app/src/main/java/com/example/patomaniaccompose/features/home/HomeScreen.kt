@@ -18,10 +18,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -50,7 +55,6 @@ fun RecipesItem(
     ) {
 
         Text(
-
             text = item.tittle,
             fontSize = 15.sp,
             fontStyle = FontStyle.Normal
@@ -78,30 +82,54 @@ fun HomeScreen(
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        Column(
+        ConstraintLayout(
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
                 .fillMaxSize()
                 .padding(it)
         ) {
-            Text(text = "prueba de recetas")
-
+            val (lazyColumnRecipes,textList, buttonSimilar) = createRefs()
+            Text(
+                text = "Listado de dietas",
+                fontSize = 25.sp,
+                color = Color.Blue,
+                fontStyle = FontStyle.Italic,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.constrainAs(textList) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+            )
             LazyColumn(
-                Modifier.height(800.dp)
+                Modifier.constrainAs(lazyColumnRecipes) {
+                    top.linkTo(textList.bottom,20.dp)
+                    bottom.linkTo(buttonSimilar.top)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    height = Dimension.fillToConstraints
+                }
             ) {
-
                 items(uiState.value.listRecipes) {
-
                     RecipesItem(item = it) { id ->
                         navController.navigate(AppScreens.DetailsScreen.createRoute(id))
                     }
                 }
             }
 
-            Button(onClick = {
-                navController.navigate(AppScreens.SimilarRecipeScreen.route)
-            }) {
-                Text(text = "go to similarRecipe")
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier.constrainAs(buttonSimilar) {
+                    top.linkTo(lazyColumnRecipes.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                    bottom.linkTo(parent.bottom)
+                }
+            ) {
+                Text(
+                    text = "Dietas similares",
+                    fontSize = 15.sp,
+                    modifier = Modifier
+                )
             }
         }
     }
